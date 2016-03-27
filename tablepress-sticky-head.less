@@ -1,9 +1,10 @@
 .stickyHeader {
   background-color: white;
-  position: relative;
-  z-index: 99;
+  position: absolute;
+  z-index: 0;
+  top: 0;
 
   &.moving {
-    position: absolute;
+    z-index: 99;
   }
 }

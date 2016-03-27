@@ -1,1 +1,1 @@
-.stickyHeader{background-color:#fff;position:relative;z-index:99}.stickyHeader.moving{position:absolute}
+.stickyHeader{background-color:#fff;position:absolute;z-index:0;top:0}.stickyHeader.moving{z-index:99}
