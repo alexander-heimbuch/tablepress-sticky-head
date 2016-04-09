@@ -29,22 +29,21 @@
 
             if (settings.nScrollHead === null) {
                 $header = $tableNode.find('thead');
+                $header.find('th').each(function (index, node) {
+                    var $node = $(node);
+                    $node.width($node.width());
+                });
+
+                $headerCopy = $header.clone();
+                $headerCopy.insertAfter($header);
             } else {
-                $header = $(settings.nScrollHead);
+                $header = $headerCopy = $(settings.nScrollHead);
             }
 
             $wrapper = $header.parent();
             $wrapper.css('position', 'relative');
 
-            $header.find('th').each(function (index, node) {
-                var $node = $(node);
-                $node.width($node.width());
-            });
-
-            $headerCopy = $header.clone();
-            $headerCopy
-                .addClass('stickyHeader')
-                .insertAfter($header);
+            $headerCopy.addClass('stickyHeader');
 
             $(window).on('scroll', function () {
                 repositionHead($headerCopy, $wrapper);
