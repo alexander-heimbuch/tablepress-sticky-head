@@ -1,8 +1,4 @@
 (function ($) {
-    if (window.STICKY_HEAD === undefined) {
-        return;
-    }
-
     var repositionHead = function ($header, $wrapper) {
             var wrapperOffsetTop = $wrapper.offset().top,
                 scrollOffsetTop = $('body').scrollTop(),
@@ -49,12 +45,18 @@
                 repositionHead($headerCopy, $wrapper);
             });
         };
+        
+    $(document).ready(function () { 
+        if (window.STICKY_HEAD === undefined) {
+            return;
+        }
 
-    $.each(window.STICKY_HEAD, function (tableId) {
-        var $table = $('#' + tableId);
+        $.each(window.STICKY_HEAD, function (tableId) {
+            var $table = $('#' + tableId);
 
-        $table.on( 'draw.dt', function () {
-            stickyHeader($table);
+            $table.on( 'draw.dt', function () {
+                stickyHeader($table);
+            });
         });
     });
 })(jQuery);
